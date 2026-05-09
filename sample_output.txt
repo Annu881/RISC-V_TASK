@@ -1,0 +1,113 @@
+=== Tier 1 Classification ===
+Extension       | Count           | Example
+---------------------------------------------
+rv32_zknd       | 2    instructions | e.g. AES32DSI
+rv32_zkne       | 2    instructions | e.g. AES32ESI
+rv64_a          | 4    instructions | e.g. LR.D
+rv64_i          | 15   instructions | e.g. SLLI
+rv64_m          | 5    instructions | e.g. MULW
+rv64_zba        | 5    instructions | e.g. SH1ADD.UW
+rv64_zbb        | 7    instructions | e.g. CLZW
+rv64_zbkb       | 1    instructions | e.g. PACKW
+rv64_zknd       | 5    instructions | e.g. AES64DS
+rv64_zkne       | 4    instructions | e.g. AES64KS1I
+rv64_zknh       | 4    instructions | e.g. SHA512SIG0
+rv_a            | 11   instructions | e.g. LR.W
+rv_c            | 26   instructions | e.g. C.ADDI4SPN
+rv_d            | 19   instructions | e.g. FLD
+rv_f            | 27   instructions | e.g. FLW
+rv_i            | 40   instructions | e.g. LUI
+rv_m            | 8    instructions | e.g. MUL
+rv_system       | 4    instructions | e.g. MRET
+rv_v            | 18   instructions | e.g. VSETVLI
+rv_zawrs        | 2    instructions | e.g. WRS.NTO
+rv_zba          | 8    instructions | e.g. SH1ADD
+rv_zbb          | 24   instructions | e.g. CLZ
+rv_zbc          | 3    instructions | e.g. CLMUL
+rv_zbkb         | 9    instructions | e.g. ANDN
+rv_zbkc         | 2    instructions | e.g. CLMUL
+rv_zbkx         | 2    instructions | e.g. XPERM4
+rv_zbs          | 8    instructions | e.g. BCLR
+rv_zicbom       | 3    instructions | e.g. CBO.CLEAN
+rv_zicbozm      | 1    instructions | e.g. CBO.ZERO
+rv_zicntr       | 3    instructions | e.g. RDCYCLE
+rv_zicsr        | 6    instructions | e.g. CSRRW
+rv_zifencei     | 1    instructions | e.g. FENCE.I
+rv_zihintpause  | 1    instructions | e.g. PAUSE
+rv_zknd         | 7    instructions | e.g. AES32DSI
+rv_zkne         | 6    instructions | e.g. AES64KS1I
+rv_zknh         | 8    instructions | e.g. SHA256SIG0
+rv_zksed        | 2    instructions | e.g. SM4ED
+rv_zksh         | 2    instructions | e.g. SM3P0
+
+=== Shared Instructions ===
+ADD.UW     belongs to rv_zba, rv64_zba
+AES32DSI   belongs to rv_zknd, rv32_zknd
+AES32DSMI  belongs to rv_zknd, rv32_zknd
+AES32ESI   belongs to rv_zkne, rv32_zkne
+AES32ESMI  belongs to rv_zkne, rv32_zkne
+AES64DS    belongs to rv_zknd, rv64_zknd
+AES64DSM   belongs to rv_zknd, rv64_zknd
+AES64ES    belongs to rv_zkne, rv64_zkne
+AES64ESM   belongs to rv_zkne, rv64_zkne
+AES64IM    belongs to rv_zknd, rv64_zknd
+AES64KS1I  belongs to rv_zknd, rv_zkne, rv64_zknd, rv64_zkne
+AES64KS2   belongs to rv_zknd, rv_zkne, rv64_zknd, rv64_zkne
+ANDN       belongs to rv_zbb, rv_zbkb
+CLMUL      belongs to rv_zbc, rv_zbkc
+CLMULH     belongs to rv_zbc, rv_zbkc
+CLZW       belongs to rv_zbb, rv64_zbb
+CPOPW      belongs to rv_zbb, rv64_zbb
+CTZW       belongs to rv_zbb, rv64_zbb
+FCVT.D.S   belongs to rv_d, rv_f
+ORN        belongs to rv_zbb, rv_zbkb
+PACKW      belongs to rv_zbkb, rv64_zbkb
+ROLW       belongs to rv_zbb, rv64_zbb
+RORIW      belongs to rv_zbb, rv64_zbb
+RORW       belongs to rv_zbb, rv64_zbb
+SH1ADD.UW  belongs to rv_zba, rv64_zba
+SH2ADD.UW  belongs to rv_zba, rv64_zba
+SH3ADD.UW  belongs to rv_zba, rv64_zba
+SHA512SIG0 belongs to rv_zknh, rv64_zknh
+SHA512SIG1 belongs to rv_zknh, rv64_zknh
+SHA512SUM0 belongs to rv_zknh, rv64_zknh
+SHA512SUM1 belongs to rv_zknh, rv64_zknh
+SLLI       belongs to rv_i, rv64_i
+SLLI.UW    belongs to rv_zba, rv64_zba
+SRAI       belongs to rv_i, rv64_i
+SRLI       belongs to rv_i, rv64_i
+XNOR       belongs to rv_zbb, rv_zbkb
+ZEXT.H     belongs to rv_zbb, rv64_zbb
+
+=============================================
+
+=== Tier 2 Cross-Reference ===
+Summary: 25 matched, 2 in JSON only, 167 in manual only.
+
+Extensions ONLY in JSON (2):
+rv_system, rv_zicbozm
+
+Extensions ONLY in Manual (167):
+Bit, Cryptography, Extension, Extensions, Historical, Hypervisor, ISA, Instruction, Machine, Matrix, Non, Packed, Pointer, RVA20S64, RVA20U64, RVA22S64, RVA22U64, RVA23S64, RVA23U64, RVB23S64, RVB23U64, RVI20U32, RVI20U64, Scalar, Sh, Sha, Shcounterenw, Shgatpa, Shtvala, Shvsatpa, Shvstvala, Shvstvecd, Sm, Smcdeleg, Smctr, Smdbltrp, Smepmp, Smrnmi, Ssccptr, Sscofpmf, Sscounterenw, Ssdbltrp, Ssqosid, Ssstrict, Sstc, Sstvala, Sstvecd, Ssu64xl, State, Sv, Svadu, Svinval, Svnapot, Svrsw60t59b, Svvptc, User, Vector, Za, b, e, ext, g, h, p, q, shmno, sm1p13, smpqr, smstateen, ss, ssghi, su, sudef, sv32, sv39, sv48, sv59, svjkl, svpbmt, x, xhwacha, xstu, z, za128rs, za64rs, zaamo, zabc, zabha, zacas, zalasr, zalrsc, zama16b, zb, zc, zca, zcb, zcd, zce, zcf, zclsd, zcmop, zcmp, zcmt, zdinx, zf, zfa, zfbfmin, zfh, zfhmin, zfinx, zhinx, zhinxmin, zi, zic64b, zicbop, zicboz, ziccamoa, ziccamoc, ziccid, ziccif, zicclsm, ziccrse, zicfilp, zicfiss, zicond, zihintntl, zihpm, zilsd, zimop, zk, zkn, zkr, zks, zkt, zm, zmmul, zqinx, ztso, zv, zvbb, zvbc, zve, zve32f, zve32x, zve64d, zve64f, zve64x, zvfbfmin, zvfbfwma, zvfh, zvfhmin, zvkb, zvkg, zvkn, zvknc, zvkned, zvkng, zvknha, zvknhb, zvks, zvksc, zvksed, zvksg, zvksh, zvkt, zvl, zvl32b
+
+=============================================
+
+=== Tier 3 Text-Based Graph ===
+Extensions connected by shared instructions:
+
+[rv32_zknd] <------> [rv_zknd] (Shared: aes32dsi, aes32dsmi)
+[rv32_zkne] <------> [rv_zkne] (Shared: aes32esi, aes32esmi)
+[rv64_i] <------> [rv_i] (Shared: slli, srai, srli)
+[rv64_zba] <------> [rv_zba] (Shared: add.uw, sh1add.uw, sh2add.uw, sh3add.uw, slli.uw)
+[rv64_zbb] <------> [rv_zbb] (Shared: clzw, cpopw, ctzw, rolw, roriw, rorw, zext.h)
+[rv64_zbkb] <------> [rv_zbkb] (Shared: packw)
+[rv64_zknd] <------> [rv64_zkne] (Shared: aes64ks1i, aes64ks2)
+[rv64_zknd] <------> [rv_zknd] (Shared: aes64ds, aes64dsm, aes64im, aes64ks1i, aes64ks2)
+[rv64_zknd] <------> [rv_zkne] (Shared: aes64ks1i, aes64ks2)
+[rv64_zkne] <------> [rv_zknd] (Shared: aes64ks1i, aes64ks2)
+[rv64_zkne] <------> [rv_zkne] (Shared: aes64es, aes64esm, aes64ks1i, aes64ks2)
+[rv64_zknh] <------> [rv_zknh] (Shared: sha512sig0, sha512sig1, sha512sum0, sha512sum1)
+[rv_d] <------> [rv_f] (Shared: fcvt.d.s)
+[rv_zbb] <------> [rv_zbkb] (Shared: andn, orn, xnor)
+[rv_zbc] <------> [rv_zbkc] (Shared: clmul, clmulh)
+[rv_zknd] <------> [rv_zkne] (Shared: aes64ks1i, aes64ks2)

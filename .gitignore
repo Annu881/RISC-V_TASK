@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+riscv-isa-manual/
+riscv_explorer_submission.zip
