@@ -1,62 +1,44 @@
-# RISC-V Instruction Set Explorer 🚀
+# RISC-V Instruction Set Explorer
 
-A modular exploration tool designed to parse, group, and cross-reference the RISC-V extensions landscape. This project was developed as a solution to the **RISC-V Mentorship Coding Challenge**.
+This is a Python-based exploration tool developed for the RISC-V Mentorship Coding Challenge. It parses, groups, and cross-references RISC-V instruction definitions against the official RISC-V ISA manual.
 
-## 📖 Overview
+## Features
+- **Tier 1 (Instruction Set Parsing):** Parses `instr_dict.json` to group instructions by extensions and identifies overlapping instructions across multiple extensions.
+- **Tier 2 (ISA Reference Matching):** Scans the official RISC-V ISA manual AsciiDoc files to extract defined extensions, cross-referencing them with the JSON dataset to find mismatches and overlaps.
+- **Tier 3 (Extension Mapping):** Generates a text-based topology of extensions that intersect by sharing common instructions.
 
-The RISC-V Instruction Set Explorer elegantly compares machine-readable JSON definitions of the RISC-V instruction structure against the official text-based references found in the RISC-V ISA manual. The application successfully:
+## Prerequisites
+- Python 3.7+
+- A local copy of the RISC-V ISA manual
 
-1. **Parses & Classifies (Tier 1):** Groups instructions directly from `instr_dict.json` to compute accurate extension metrics, along with mapping overlaps showing instructions shared across domains.
-2. **Cross-References (Tier 2):** Scans the complex AsciiDoc files inside the official [RISC-V ISA manual](https://github.com/riscv/riscv-isa-manual) to identify exactly which architectural extensions overlap, exist solely in the JSON dictionaries, or exist solely in the official ISA document.
-3. **Graphing Overlaps (Tier 3):** Generates an ASCII text-based network graph visually linking identical extensions based on shared CPU instruction calls.
+## Installation & Setup
 
-## 📂 Project Structure
-
-```text
-.
-├── src/
-│   ├── analyzer.py   # AsciiDoc ISA macro scraping (Tier 2)
-│   ├── graph.py      # Text-based topological graph generator (Tier 3)
-│   ├── main.py       # Main orchestration logic
-│   └── parser.py     # JSON instruction classification engine (Tier 1)
-├── tests/
-│   ├── test_analyzer.py  # Unit tests tracking prefix normalizations
-│   └── test_parser.py    # Unit tests grouping validation
-├── data/
-│   └── instr_dict.json   # Instruction landscape input files
-├── README.md         # You are here!
-└── sample_output.txt # Verifiable console log of the tool's execution
-```
-
-## 🛠️ Usage & Installation
-
-**Prerequisites:** You need Python 3.7+ installed.
-
-1. **Clone the repository:**
+1. Clone this repository:
    ```bash
    git clone https://github.com/Annu881/RISC-V_TASK.git
    cd RISC-V_TASK
    ```
 
-2. **Clone the official RISC-V manual** (Wait to let it download):
+2. Clone the official RISC-V manual into the project root:
    ```bash
-   git clone https://github.com/riscv/riscv-isa-manual riscv-isa-manual
+   git clone https://github.com/riscv/riscv-isa-manual
    ```
 
-3. **Run the Explorer:**
-   ```bash
-   export PYTHONPATH=$(pwd)
-   python3 src/main.py
-   ```
+## Usage
 
-### Running the Test Suite
-The tool provides rock-solid reliability through Python's standard `unittest` framework:
+To run the main analysis script:
+```bash
+export PYTHONPATH=$(pwd)
+python3 src/main.py
+```
+
+To run the unit tests:
 ```bash
 export PYTHONPATH=$(pwd)
 python3 -m unittest discover tests/ -v
 ```
 
-## 🧠 Design Philosophy & Extensibility
+## Implementation Notes
 
-- **String Normalization Magic:** To ensure reliable 1-to-1 matching across datasets written by entirely different teams, strings are stripped from conventional architecture prefixes (`rv_`, `rv32_`, `rv64_`) and lowercase mapped automatically before graph comparisons.
-- **Micro-Scraping vs Heavy Regex:** Instead of running heavy catastrophic tracking Regex over massive text-blocks within the ISA manual strings, `analyzer.py` explicitly captures modern `ext:...` tags ensuring the script remains blazing fast whilst extracting hundreds of distinct extensions without faltering.
+- **Naming Normalization:** The RISC-V JSON dictionary and the ISA manual adhere to different naming conventions. The `analyzer.py` module maps these accurately by parsing out standard architectural prefixes (e.g., `rv_`, `rv32_`) and converting variables to lowercase prior to computing intersections.
+- **Parsing Strategy:** To ensure high performance during AsciiDoc scanning, the extraction module directly targets `ext:*` macros and explicit `==` definition headings, avoiding the heavy regex backtracking common with generic text-block scraping.
